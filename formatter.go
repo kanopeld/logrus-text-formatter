@@ -25,7 +25,7 @@ func (f *TextFormatter) Format(entry *logrus.Entry) ([]byte, error) {
 	if f.TimeFormat == "" {
 		f.TimeFormat = time.RFC3339
 	}
-	b.WriteString(entry.Time.Format(f.TimeFormat))
+	b.WriteString(entry.Time.UTC().Format(f.TimeFormat))
 
 	if entry.Message != "" {
 		b.WriteString(fmt.Sprintf(": %s", entry.Message))
